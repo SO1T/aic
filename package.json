@@ -1,48 +1,24 @@
 {
-  "name": "aic",
-  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@ethersproject/providers": "^5.7.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@uauth/web3-react": "^2.2.0",
-    "@web3-react/abstract-connector": "^6.0.7",
-    "@web3-react/core": "^6.1.9",
-    "@web3-react/injected-connector": "^6.0.7",
-    "@web3-react/walletconnect-connector": "^6.2.13",
-    "grommet": "^2.25.3",
-    "grommet-icons": "^4.8.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
-    "styled-components": "^5.3.5",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "11.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tailwindcss-filters": "3.0.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@emotion/babel-plugin": "11.7.2",
+    "autoprefixer": "^10.4.4",
+    "next": "latest",
+    "postcss": "^8.4.12",
+    "tailwindcss": "2.1.4",
+    "xwind": "0.8.0"
   }
 }
