@@ -7,6 +7,8 @@ const Index = () => (
     <div css={xw`space-y-20`}>
       <ButtonReact>@emotion/react</ButtonReact>
       <ButtonStyled>@emotion/styled</ButtonStyled>
+      <ButtonReact>@emotion/react</ButtonReact>
+      <ButtonStyled>@emotion/styled</ButtonStyled>
     </div>
   </div>
 )
