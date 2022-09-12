@@ -9,6 +9,8 @@ const Index = () => (
       <ButtonStyled>@emotion/styled</ButtonStyled>
       <ButtonReact>@emotion/react</ButtonReact>
       <ButtonStyled>@emotion/styled</ButtonStyled>
+      <ButtonReact>@emotion/react</ButtonReact>
+      <ButtonStyled>@emotion/styled</ButtonStyled>
     </div>
   </div>
 )
