@@ -1,31 +1,23 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import xw from 'xwind'
+import cn from 'classnames'
 import { logo } from '../../assets'
 import { menus } from './config.js'
 
-const styles = {
-  nav: xw`flex-grow md:block px-0 pb-0 py-2 fixed top-36 w-full ease-in-out duration-300 opacity-0 md:pb-0 md:overflow-y-auto bg-white md:max-w-xs md:top-40 md:opacity-100`,
-  activeMenu: xw`flex-grow md:block px-0 pb-0 py-2 fixed top-36 w-full md:pb-0 ease-in-out duration-300 opacity-100 md:overflow-y-auto md:max-w-xs md:top-40`,
-  navLink: xw`flex items-center gap-3 px-4 py-2 mt-2 text-sm font-semibold text-black bg-white rounded-lg hover:bg-blue-100 focus:bg-blue-500 focus:text-white`,
-  logoContainer: xw`flex-shrink-0 px-8 py-4 flex flex-row items-center justify-center`,
-  logoLink: xw`text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-none`,
-  sidebarWrapper: xw`flex flex-col gap-20 w-full md:w-80 border-black text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0`,
-  logoButton: xw`rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-none`,
-}
+import styles from './SideBar.module.css'
 
 export const SideBar = ({}) => {
   const [sidebarOpen, setSideBarOpen] = useState(false)
   return (
-    <div css={styles.sidebarWrapper}>
-      <div css={styles.logoContainer}>
+    <div className={styles.sidebarWrapper}>
+      <div className={styles.logoContainer}>
         <Image src={logo} alt={'Logo icon'} width={180} height={133} />
         {/* onClickEvent */}
         <button
-          css={styles.logoButton}
+          className={styles.logoButton}
           onClick={() => setSideBarOpen(!sidebarOpen)}
         >
-          <svg fill="currentColor" viewBox="0 0 20 20" css={xw`w-6 h-6`}>
+          <svg fill="currentColor" viewBox="0 0 20 20" className={'w-6 h-6'}>
             {sidebarOpen ? (
               <path
                 fillRule="evenodd"
@@ -42,9 +34,9 @@ export const SideBar = ({}) => {
           </svg>
         </button> 
       </div>
-      <nav css={sidebarOpen ? styles.activeMenu : styles.nav}>
+      <nav className={cn(styles.nav, {[styles.activeMenu]: sidebarOpen})}>
         {menus.map((menu, i) => (
-          <a css={styles.navLink} key={i} href="#">
+          <a className={styles.navLink} key={i} href="#">
             <Image src={menu.icon} alt={'Menu icon'} width={32} height={32} />
             {menu.name}
           </a>
