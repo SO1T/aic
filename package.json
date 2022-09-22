@@ -8,6 +8,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "11.8.1",
+    "classnames": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tailwindcss-filters": "3.0.0"
@@ -18,6 +19,8 @@
     "autoprefixer": "^10.4.4",
     "next": "latest",
     "postcss": "^8.4.12",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^7.8.2",
     "tailwindcss": "2.1.4",
     "xwind": "0.8.0"
   }
