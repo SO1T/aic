@@ -1,0 +1,3 @@
+.main {
+    @apply p-9 flex gap-8 flex-wrap;
+}

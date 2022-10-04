@@ -3,5 +3,6 @@
 }
 
 .main {
-    @apply flex flex-col w-full bg-black;
+    @apply flex flex-col w-full;
+    background-color: #ECF0F3;
 }

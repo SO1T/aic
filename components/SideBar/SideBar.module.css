@@ -11,7 +11,7 @@
 }
 
 .logoContainer {
-    @apply flex-shrink-0 px-8 py-4 flex flex-row items-center justify-center;
+    @apply flex-shrink-0 px-8 py-4 flex flex-row items-center md:justify-center justify-between;
 }
 
 .logoLink {
@@ -24,4 +24,13 @@
 
 .logoButton {
     @apply rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-none;
+}
+
+.logo {
+    @apply hidden md:block;
+}
+
+.logoText {
+    @apply md:hidden font-bold text-5xl;
+    color: #0E5DE1;
 }

@@ -1,17 +1,22 @@
-import React, { useState } from 'react'
-import Image from 'next/image'
-import cn from 'classnames'
-import { logo } from '../../assets'
-import { menus } from './config.js'
+import React, { useState } from 'react';
+import Image from 'next/image';
+import cn from 'classnames';
+import { logo } from '../../assets';
+import { menus } from './config.js';
+import { useAppContext } from 'context';
 
 import styles from './SideBar.module.css'
 
 export const SideBar = ({}) => {
-  const [sidebarOpen, setSideBarOpen] = useState(false)
+  const [sidebarOpen, setSideBarOpen] = useState(false);
+  const { activeTab, setActiveTab } = useAppContext();
   return (
     <div className={styles.sidebarWrapper}>
       <div className={styles.logoContainer}>
+        <div className={styles.logo}>
         <Image src={logo} alt={'Logo icon'} width={180} height={133} />
+        </div>
+        <h2 className={styles.logoText}>How2Crypto</h2>
         {/* onClickEvent */}
         <button
           className={styles.logoButton}
@@ -36,7 +41,7 @@ export const SideBar = ({}) => {
       </div>
       <nav className={cn(styles.nav, {[styles.activeMenu]: sidebarOpen})}>
         {menus.map((menu, i) => (
-          <a className={styles.navLink} key={i} href="#">
+          <a className={styles.navLink} key={i} href="#" onClick={() => setActiveTab(menu.name)}>
             <Image src={menu.icon} alt={'Menu icon'} width={32} height={32} />
             {menu.name}
           </a>
