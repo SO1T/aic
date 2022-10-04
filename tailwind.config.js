@@ -7,12 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      screens: {
+        'dark-mode': {'raw': '(prefers-color-scheme: dark)'},
+      },
     },
   },
   variants: {},
   plugins: [require('tailwindcss-filters')],
-  // xwind options
-  xwind: {
-    mode: 'objectstyles',
-  },
 }

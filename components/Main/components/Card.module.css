@@ -1,0 +1,26 @@
+.card {
+  @apply p-5 flex flex-col items-center justify-between;
+  width: 200px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.imgwrapper {
+    @apply flex flex-col justify-between gap-3;
+}
+
+.title {
+  color: #3f4a62;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  text-align: center;
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  color: #3f4a62;
+}
