@@ -1,5 +1,5 @@
 .nav {
-    @apply flex-grow md:block px-0 pb-0 py-2 fixed top-36 w-full ease-in-out duration-300 opacity-0 md:pb-0 md:overflow-y-auto bg-white md:max-w-xs md:top-40 md:opacity-100;
+    @apply flex-grow md:block px-4 pb-0 py-2 fixed top-20 w-full ease-in-out duration-300 opacity-0 md:pb-0 md:overflow-y-auto bg-white md:max-w-xs md:top-40 md:opacity-100;
 }
 
 .activeMenu {
@@ -7,11 +7,16 @@
 }
 
 .navLink {
-    @apply flex items-center gap-3 px-4 py-2 mt-2 text-sm font-semibold text-black bg-white rounded-lg hover:bg-blue-100 focus:bg-blue-500 focus:text-white;
+    @apply flex items-center gap-3 px-4 py-2 mt-2 text-sm font-semibold text-black bg-white rounded-lg hover:bg-blue-100;
+}
+
+.navLinkActive {
+    @apply bg-blue-500 text-white;
+    
 }
 
 .logoContainer {
-    @apply flex-shrink-0 px-8 py-4 flex flex-row items-center md:justify-center justify-between;
+    @apply block md:fixed flex-shrink-0 px-8 py-4 flex flex-row items-center md:justify-center justify-between;
 }
 
 .logoLink {
@@ -19,7 +24,7 @@
 }
 
 .sidebarWrapper {
-    @apply flex flex-col gap-20 w-full md:w-80 border-black text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0;
+    @apply fixed md:relative z-50 flex flex-col gap-20 w-full md:w-80 border-black text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0;
 }
 
 .logoButton {
