@@ -16,7 +16,7 @@ export const SideBar = ({}) => {
         <div className={styles.logo}>
         <Image src={logo} alt={'Logo icon'} width={180} height={133} />
         </div>
-        <h2 className={styles.logoText}>How2Crypto</h2>
+        <h2 className={styles.logoText}>H2C</h2>
         {/* onClickEvent */}
         <button
           className={styles.logoButton}
@@ -41,7 +41,7 @@ export const SideBar = ({}) => {
       </div>
       <nav className={cn(styles.nav, {[styles.activeMenu]: sidebarOpen})}>
         {menus.map((menu, i) => (
-          <a className={styles.navLink} key={i} href="#" onClick={() => setActiveTab(menu.name)}>
+          <a className={cn(styles.navLink, {[styles.navLinkActive]: activeTab === menu.name })} key={i} href="#" onClick={() => setActiveTab(menu.name)}>
             <Image src={menu.icon} alt={'Menu icon'} width={32} height={32} />
             {menu.name}
           </a>

@@ -1,9 +1,9 @@
 .header {
-    @apply flex justify-between py-16 px-8;
+    @apply flex justify-between pt-24 md:py-16 px-8;
 }
 
 .connectWalletWrapper {
-    @apply w-64 rounded-lg text-center py-5 cursor-pointer;
+    @apply hidden md:block w-64 rounded-lg text-center py-5 cursor-pointer;
     color: rgba(0, 0, 0, 0.87);
     background-color: #0E5DE1;
 }
