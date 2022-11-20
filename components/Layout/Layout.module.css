@@ -1,8 +1,0 @@
-.root {
-    @apply md:flex flex-col md:flex-row md:min-h-screen w-full;
-}
-
-.main {
-    @apply flex flex-col w-full;
-    background-color: #ECF0F3;
-}
