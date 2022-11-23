@@ -27,7 +27,6 @@ import {
   WbSunnyOutlined,
   Search,
 } from '@material-ui/icons'
-import classes from './index.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
@@ -37,8 +36,10 @@ import {
   createTheme,
 } from '@material-ui/core/styles'
 import logo from '../../assets/logo.png'
+import cn from 'classnames'
+// import '../Header/Header.module.scss'
 
-const drawerWidth = 240
+const drawerWidth = 300
 const navItems = [
   { title: 'All projects' },
   { title: 'Blockchains' },
@@ -152,7 +153,7 @@ const searchTheme = createTheme({
   },
 })
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     display: 'flex',
     position: 'relative',
@@ -165,30 +166,63 @@ const styles = theme => ({
     boxSizing: 'border-box',
     background: '#2b2e3c',
   },
+  appBar: {
+    zIndex: 10000,
+  },
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0 20px',
+    backgroundColor: 'white',
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: "nowrap"
+    whiteSpace: 'nowrap',
   },
   drawerOpen: {
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
+    width: '100%',
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerClose: {
-    transition: theme.transitions.create("width", {
+    transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    overflowX: "hidden",
-    width: theme.spacing.unit * 7 + 1,
-    [theme.breakpoints.up("sm")]: {
-      width: theme.spacing.unit * 9 + 1
-    }
-  }
-});
+    overflowX: 'hidden',
+    width: drawerWidth,
+    [theme.breakpoints.down('sm')]: {
+      width: 0,
+    },
+  },
+  sidebarList: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: '20px',
+    padding: '132px 0 0 32px',
+  },
+  sidebarItemWrapper: {
+    '&:hover': {
+      background: '#6A68EE',
+      opacity: 0.1,
+      borderRadius: '8px',
+    },
+  },
+  sidebarItem: {
+    fontWeight: 500,
+    fontSize: '20px',
+    lineHeight: '100%',
+    color: theme.palette.type === 'dark' ? '#fff' : '#000',
+    '&:hover': {
+      color: '#6A68EE',
+    },
+  },
+})
 
 function Layout({ changeTheme, theme, classes, children }) {
   const [open, setOpen] = useState(false)
@@ -215,7 +249,7 @@ function Layout({ changeTheme, theme, classes, children }) {
   }
 
   return (
-    <div className={classes.container}>
+    <div className={cn({[!theme]: classes.container, [theme]: classes.containerDark})}>
       <AppBar component="nav" position="fixed" className={classes.appBar}>
         <Toolbar disableGutters={true} className={classes.toolbar}>
           <Box
@@ -230,7 +264,7 @@ function Layout({ changeTheme, theme, classes, children }) {
               color="black"
               aria-label="open drawer"
               edge="start"
-              // onClick={handleDrawerToggle}
+              onClick={() => setOpen(!open)}
             >
               <Menu color="black" />
             </IconButton>
@@ -257,7 +291,7 @@ function Layout({ changeTheme, theme, classes, children }) {
               sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
-                color: theme.palette.type === 'dark' ? '#000' : '#fff',
+                color: darkMode ? '#fff' : '#000',
                 width: '100%',
               }}
             >
@@ -312,16 +346,26 @@ function Layout({ changeTheme, theme, classes, children }) {
       </AppBar>
       <Drawer
         variant="permanent"
-        className={`${classes.drawer} ${open ? classes.drawerOpen : classes.drawerClose}`}
+        className={cn(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        })}
         classes={{
-          paper: open ? classes.drawerOpen : classes.drawerClose
+          paper: cn({
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open,
+          }),
         }}
         open={open}
       >
         <div className={classes.toolbar} />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <Typography>{text}</Typography>
+        <List className={cn(classes.sidebarList)}>
+          {navItems.map((item, index) => (
+            <Box className={cn(classes.sidebarItemWrapper)}>
+              <Typography className={cn(classes.sidebarItem)}>
+                {item.title}
+              </Typography>
+            </Box>
           ))}
         </List>
       </Drawer>
@@ -333,4 +377,4 @@ function Layout({ changeTheme, theme, classes, children }) {
   )
 }
 
-export default withStyles(styles, { withTheme: true })(Layout);
+export default withStyles(styles, { withTheme: true })(Layout)

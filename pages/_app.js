@@ -41,21 +41,21 @@ function App({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    Fathom.load("TKCNGGEZ", {
-      includedDomains: ["chainlist.defillama.com", "chainlist.org"],
-      url: "https://surprising-powerful.llama.fi/script.js",
-    });
+    // Fathom.load("TKCNGGEZ", {
+    //   includedDomains: ["chainlist.defillama.com", "chainlist.org"],
+    //   url: "https://surprising-powerful.llama.fi/script.js",
+    // });
 
-    function onRouteChangeComplete() {
-      Fathom.trackPageview();
-    }
-    // Record a pageview when route changes
-    router.events.on("routeChangeComplete", onRouteChangeComplete);
+    // function onRouteChangeComplete() {
+    //   // Fathom.trackPageview();
+    // }
+    // // Record a pageview when route changes
+    // router.events.on("routeChangeComplete", onRouteChangeComplete);
 
-    // Unassign event listener
-    return () => {
-      router.events.off("routeChangeComplete", onRouteChangeComplete);
-    };
+    // // Unassign event listener
+    // return () => {
+    //   router.events.off("routeChangeComplete", onRouteChangeComplete);
+    // };
   }, []);
 
   return (
