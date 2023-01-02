@@ -377,7 +377,7 @@ function Layout({ changeTheme, theme, classes, children }) {
       </Drawer>
       <main>
         <div />
-        {children}
+        {/* {children} */}
       </main>
     </div>
   )
