@@ -8,10 +8,10 @@ import Layout from "../components/Layout";
 import classes from "../components/Layout/index.module.css";
 
 export async function getStaticProps({ locale }) {
-  const chains = await fetcher("https://chainid.network/chains.json");
-  const chainTvls = await fetcher("https://api.llama.fi/chains");
+  // const chains = await fetcher("https://chainid.network/chains.json");
+  // const chainTvls = await fetcher("https://api.llama.fi/chains");
 
-  const sortedChains = chains
+  const sortedChains = []
     .filter((c) => c.name !== "420coin") // same chainId as ronin
     .map((chain) => populateChain(chain, chainTvls))
     .sort((a, b) => {

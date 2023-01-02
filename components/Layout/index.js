@@ -174,7 +174,7 @@ const styles = (theme) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 20px',
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.type === 'dark' ? '#111A26' : '#FFFFFF',
   },
   drawer: {
     width: drawerWidth,
@@ -207,10 +207,17 @@ const styles = (theme) => ({
     padding: '132px 0 0 32px',
   },
   sidebarItemWrapper: {
+    width: '80%',
+    padding: '9px',
+    display: 'flex',
+    alignItems: 'center',
     '&:hover': {
-      background: '#6A68EE',
-      opacity: 0.1,
+      // backgroundColor: '#d2e8fc',
+      backgroundColor: 'rgba(104,136,238, 0.1)',
       borderRadius: '8px',
+      '& > p': {
+        color: '#6888ee'
+      }
     },
   },
   sidebarItem: {
@@ -218,9 +225,6 @@ const styles = (theme) => ({
     fontSize: '20px',
     lineHeight: '100%',
     color: theme.palette.type === 'dark' ? '#fff' : '#000',
-    '&:hover': {
-      color: '#6A68EE',
-    },
   },
 })
 
@@ -282,9 +286,10 @@ function Layout({ changeTheme, theme, classes, children }) {
             sx={{
               display: { xs: 'none', sm: 'flex' },
               justifyContent: 'space-between',
+              gap: '50px'
             }}
           >
-            <Box sx={{ width: '48px', height: '40px' }}>
+            <Box sx={{ width: '48px', height: '40px', display: 'flex', alignItems: 'center' }}>
               <Image width={48} height={40} src={logo} />
             </Box>
             <Box
@@ -292,12 +297,13 @@ function Layout({ changeTheme, theme, classes, children }) {
                 display: 'flex',
                 justifyContent: 'space-between',
                 color: darkMode ? '#fff' : '#000',
-                width: '100%',
+                gap: '15px',
+                alignItems: 'center'
               }}
             >
               {['DOCS', 'BLOG', 'ROADMAP'].map((item) => (
                 <Typography
-                  sx={{ fontWeight: 600, fontSize: '22px', lineHeight: '100%' }}
+                  sx={{ fontWeight: 600, fontSize: '22px', lineHeight: '100%', color: theme.palette.type === 'dark' ? '#fff' : '#000', }}
                 >
                   {item}
                 </Typography>
@@ -371,7 +377,7 @@ function Layout({ changeTheme, theme, classes, children }) {
       </Drawer>
       <main>
         <div />
-        {/* {children} */}
+        {children}
       </main>
     </div>
   )

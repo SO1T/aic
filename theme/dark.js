@@ -7,8 +7,8 @@ const theme = createTheme({
   palette: {
     ...coreTheme.palette,
     background: {
-      default: '#22252E',
-      paper: '#2B2E3C',
+      default: '#000711',
+      paper: '#111A26',
     },
     primary: {
       main: '#2F80ED',
