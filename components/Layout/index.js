@@ -75,6 +75,7 @@ const StyledSwitch = withStyles((theme) => ({
     height: 24,
   },
   track: {
+    top: '3px !important',
     borderRadius: 32 / 2,
     border: `1px solid #212529`,
     backgroundColor: '#212529',
@@ -98,59 +99,6 @@ const StyledSwitch = withStyles((theme) => ({
       {...props}
     />
   )
-})
-
-const searchTheme = createTheme({
-  palette: {
-    type: 'light',
-    primary: {
-      main: '#FFF',
-    },
-  },
-  shape: {
-    borderRadius: '16px',
-  },
-  typography: {
-    fontFamily: [
-      'Inter',
-      'Arial',
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    body1: {
-      fontSize: '12px',
-      backgroundColor: '#F4F4F4',
-    },
-  },
-  overrides: {
-    MuiPaper: {
-      elevation1: {
-        'box-shadow': '0px 7px 7px #0000000A;',
-        '-webkit-box-shadow': '0px 7px 7px #0000000A;',
-        '-moz-box-shadow': '0px 7px 7px #0000000A;',
-      },
-    },
-    MuiInputBase: {
-      input: {
-        fontSize: '14px',
-      },
-    },
-    MuiOutlinedInput: {
-      input: {
-        padding: '12.5px 14px',
-      },
-      notchedOutline: {
-        borderColor: '#F4F4F4',
-      },
-    },
-  },
 })
 
 const styles = (theme) => ({
@@ -211,13 +159,14 @@ const styles = (theme) => ({
     padding: '9px',
     display: 'flex',
     alignItems: 'center',
+    cursor: 'pointer',
     '&:hover': {
       // backgroundColor: '#d2e8fc',
       backgroundColor: 'rgba(104,136,238, 0.1)',
       borderRadius: '8px',
       '& > p': {
-        color: '#6888ee'
-      }
+        color: '#6888ee',
+      },
     },
   },
   sidebarItem: {
@@ -225,6 +174,33 @@ const styles = (theme) => ({
     fontSize: '20px',
     lineHeight: '100%',
     color: theme.palette.type === 'dark' ? '#fff' : '#000',
+  },
+  navItemsWrapper: {
+    padding: '2px 5px',
+    '&:hover': {
+      // backgroundColor: '#d2e8fc',
+      backgroundColor: 'rgba(104,136,238, 0.1)',
+      borderRadius: '8px',
+      '& > p': {
+        color: '#6888ee',
+      },
+    },
+  },
+  searchContainer: {
+    // height: '48px',
+    maxWidth: '485px',
+    borderRadius: '16px',
+    backgroundColor: theme.palette.type === 'dark' ? '#080F1A' : '#F4F4F4',
+    color: theme.palette.type === 'dark' ? '#fff' : '#111',
+    fontWeight: 700,
+    fontSize: '24px',
+    lineHeight: '100%',
+  },
+  searchInputAdnornment: {
+    fontWeight: 400,
+    fontSize: '24px',
+    lineHeight: '100%',
+    color: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.29)' : '#111',
   },
 })
 
@@ -253,7 +229,12 @@ function Layout({ changeTheme, theme, classes, children }) {
   }
 
   return (
-    <div className={cn({[!theme]: classes.container, [theme]: classes.containerDark})}>
+    <div
+      className={cn({
+        [!theme]: classes.container,
+        [theme]: classes.containerDark,
+      })}
+    >
       <AppBar component="nav" position="fixed" className={classes.appBar}>
         <Toolbar disableGutters={true} className={classes.toolbar}>
           <Box
@@ -286,10 +267,17 @@ function Layout({ changeTheme, theme, classes, children }) {
             sx={{
               display: { xs: 'none', sm: 'flex' },
               justifyContent: 'space-between',
-              gap: '50px'
+              gap: '50px',
             }}
           >
-            <Box sx={{ width: '48px', height: '40px', display: 'flex', alignItems: 'center' }}>
+            <Box
+              sx={{
+                width: '48px',
+                height: '40px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               <Image width={48} height={40} src={logo} />
             </Box>
             <Box
@@ -298,15 +286,22 @@ function Layout({ changeTheme, theme, classes, children }) {
                 justifyContent: 'space-between',
                 color: darkMode ? '#fff' : '#000',
                 gap: '15px',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               {['DOCS', 'BLOG', 'ROADMAP'].map((item) => (
-                <Typography
-                  sx={{ fontWeight: 600, fontSize: '22px', lineHeight: '100%', color: theme.palette.type === 'dark' ? '#fff' : '#000', }}
-                >
-                  {item}
-                </Typography>
+                <Box className={classes.navItemsWrapper}>
+                  <Typography
+                    sx={{
+                      fontWeight: 600,
+                      fontSize: '22px',
+                      lineHeight: '100%',
+                      color: theme.palette.type === 'dark' ? '#fff' : '#000',
+                    }}
+                  >
+                    {item}
+                  </Typography>
+                </Box>
               ))}
             </Box>
           </Box>
@@ -320,32 +315,30 @@ function Layout({ changeTheme, theme, classes, children }) {
               />
             </Box>
             <Box>
-              <ThemeProvider theme={searchTheme}>
-                <Paper className={classes.searchPaper}>
-                  <TextField
-                    fullWidth
-                    className={classes.searchContainer}
-                    variant="outlined"
-                    placeholder="ETH, Fantom, ..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <Search fontSize="small" />
-                        </InputAdornment>
-                      ),
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <Typography classes={classes.searchInputAdnornment}>
-                            {t('search-networks')}
-                          </Typography>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                </Paper>
-              </ThemeProvider>
+              <Box>
+                <TextField
+                  fullWidth
+                  className={classes.searchContainer}
+                  variant="outlined"
+                  placeholder="ETH, Fantom, ..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <Search fontSize="small" />
+                      </InputAdornment>
+                    ),
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Typography classes={classes.searchInputAdnornment}>
+                          {t('search-networks')}
+                        </Typography>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Box>
             </Box>
           </Box>
         </Toolbar>
