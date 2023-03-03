@@ -202,6 +202,13 @@ const styles = (theme) => ({
     lineHeight: '100%',
     color: theme.palette.type === 'dark' ? 'rgba(255, 255, 255, 0.29)' : '#111',
   },
+  mainContentWrapper: {
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '100%',
+    },
+    maxWidth: 'calc(100% - 300px)',
+    marginTop: '100px',
+  },
 })
 
 function Layout({ changeTheme, theme, classes, children }) {
@@ -230,6 +237,7 @@ function Layout({ changeTheme, theme, classes, children }) {
 
   return (
     <div
+      style={{ display: 'flex' }}
       className={cn({
         [!theme]: classes.container,
         [theme]: classes.containerDark,
@@ -360,17 +368,21 @@ function Layout({ changeTheme, theme, classes, children }) {
         <div className={classes.toolbar} />
         <List className={cn(classes.sidebarList)}>
           {navItems.map((item, index) => (
-            <Box className={cn(classes.sidebarItemWrapper)}>
-              <Typography className={cn(classes.sidebarItem)}>
-                {item.title}
-              </Typography>
-            </Box>
+            <Link href={'/wallet'}>
+              <Box className={cn(classes.sidebarItemWrapper)}>
+                <Typography className={cn(classes.sidebarItem)}>
+                  {item.title}
+                </Typography>
+              </Box>
+            </Link>
           ))}
         </List>
       </Drawer>
-      <main>
-        <div />
-        {/* {children} */}
+      <main
+        sx={{ maxWidth: { xs: '100%', sm: 'calc(100% - 300px)' } }}
+        className={cn(classes.mainContentWrapper)}
+      >
+        {children}
       </main>
     </div>
   )
