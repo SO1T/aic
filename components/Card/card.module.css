@@ -1,7 +1,12 @@
-.chainContainer {
-  width: 100%;
+.cardContainer {
+  width: 250px;
   border-radius: 10px;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .addButton {
@@ -10,11 +15,15 @@
   justify-content: center;
 }
 
-.chainInfoContainer {
+.cardButton {
+  width: 230px;
+}
+
+.cardInfoContainer {
   display: flex;
-  align-items: flex-start;
-  margin-left: 52px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 15px; */
 }
 
 .dataPoint {
@@ -29,7 +38,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 24px;
   width: 100%;
   margin-bottom: 12px !important;
 }
@@ -50,10 +58,6 @@
   text-overflow: ellipsis;
   position: relative;
   top: 1px;
-}
-
-.avatar img {
-  border-radius: 100%;
 }
 
 .visuallyHidden {

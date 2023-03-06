@@ -127,7 +127,6 @@ const coreTheme = {
       },
       root: {
         minWidth: '50px',
-        borderRadius: '32px'
       },
       outlinedSizeSmall: {
         fontSize: '0.7rem',

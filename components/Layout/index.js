@@ -41,11 +41,11 @@ import cn from 'classnames'
 
 const drawerWidth = 300
 const navItems = [
-  { title: 'All projects' },
-  { title: 'Blockchains' },
-  { title: 'EVM-Chains' },
-  { title: 'Wallets' },
-  { title: 'Bridges' },
+  { title: 'All projects', link: '#' },
+  { title: 'Blockchains', link: 'blockchains' },
+  { title: 'EVM-Chains', link: '#' },
+  { title: 'Wallets', link: 'wallets' },
+  { title: 'Bridges', link: '#' },
 ]
 
 const StyledSwitch = withStyles((theme) => ({
@@ -206,7 +206,9 @@ const styles = (theme) => ({
     [theme.breakpoints.down('md')]: {
       maxWidth: '100%',
     },
-    maxWidth: 'calc(100% - 300px)',
+    [theme.breakpoints.up('md')]: {
+      maxWidth: 'calc(100% - 300px)',
+    },
     marginTop: '100px',
   },
 })
@@ -368,7 +370,7 @@ function Layout({ changeTheme, theme, classes, children }) {
         <div className={classes.toolbar} />
         <List className={cn(classes.sidebarList)}>
           {navItems.map((item, index) => (
-            <Link href={'/wallet'}>
+            <Link href={item.link}>
               <Box className={cn(classes.sidebarItemWrapper)}>
                 <Typography className={cn(classes.sidebarItem)}>
                   {item.title}
