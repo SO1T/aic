@@ -1,4 +1,4 @@
-import { Card } from '../components/Card';
+import Card from '../components/Card';
 import React, { useMemo } from "react";
 import Head from "next/head";
 import { withTheme } from "@material-ui/core/styles";
