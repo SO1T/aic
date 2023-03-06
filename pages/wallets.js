@@ -6,6 +6,7 @@ import { fetcher, populateChain } from "../utils";
 import { useSearch, useTestnets } from "../stores";
 import Layout from "../components/Layout";
 import classes from "../components/Layout/index.module.css";
+import { wallets } from '../mocks/wallet';
 
 function Wallet({ changeTheme, theme, sortedChains }) {
   return (
@@ -21,25 +22,8 @@ function Wallet({ changeTheme, theme, sortedChains }) {
       <Layout changeTheme={changeTheme} theme={theme}>
         <div className={classes.cardsContainer}>
           {
-          /* {(search === ''
-            ? chains
-            : chains.filter((chain) => {
-                //filter
-                return (
-                  chain.chain.toLowerCase().includes(search.toLowerCase()) ||
-                  chain.chainId
-                    .toString()
-                    .toLowerCase()
-                    .includes(search.toLowerCase()) ||
-                  chain.name.toLowerCase().includes(search.toLowerCase()) ||
-                  (chain.nativeCurrency ? chain.nativeCurrency.symbol : '')
-                    .toLowerCase()
-                    .includes(search.toLowerCase())
-                )
-              })
-          )*/
-          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((chain, idx) => { 
-            return <Card chain={chain} key={idx} />
+          wallets.map((item, idx) => { 
+            return <Card item={item} key={idx} />
           })}
         </div>
       </Layout>

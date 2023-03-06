@@ -17,6 +17,14 @@
 
 .cardButton {
   width: 230px;
+  /* color: #fff !important; */
+}
+
+.cardButton:hover {
+  /* background-color: unset !important;
+  background: rgba(104,136,238, 0.1) !important;
+  color: #6888ee !important;
+  font-weight: 700; */
 }
 
 .cardInfoContainer {
